@@ -2,7 +2,7 @@
 /**
 @Prefix('admin/newsletter')
 */
-class NewsletterAdminController extends \Coxis\App\Admin\Libs\Controller\ModelAdminController {
+class NewsletterAdminController extends \App\Admin\Libs\Controller\ModelAdminController {
 	static $_model = 'mailing';
 	static $_models = 'mailings';
 	static $_index = 'newsletter';
@@ -19,7 +19,7 @@ class NewsletterAdminController extends \Coxis\App\Admin\Libs\Controller\ModelAd
 	}
 	
 	public function formConfigure($model) {
-		$form = new \Coxis\App\Admin\Libs\Form\AdminModelForm($model, $this);
+		$form = new \App\Admin\Libs\Form\AdminModelForm($model, $this);
 		return $form;
 	}
 	
