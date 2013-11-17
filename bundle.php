@@ -1,5 +1,5 @@
 <?php
-namespace App\Newsletter;
+namespace Coxis\Newsletter;
 
 class Bundle extends \Coxis\Core\BundleLoader {
 	public function run() {

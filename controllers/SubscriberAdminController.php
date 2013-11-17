@@ -2,7 +2,7 @@
 /**
 @Prefix('admin/subscribers')
 */
-class SubscriberAdminController extends \App\Admin\Libs\Controller\ModelAdminController {
+class SubscriberAdminController extends \Coxis\Admin\Libs\Controller\ModelAdminController {
 	static $_model = 'subscriber';
 	static $_models = 'subscribers';
 	
@@ -18,7 +18,7 @@ class SubscriberAdminController extends \App\Admin\Libs\Controller\ModelAdminCon
 	}
 	
 	public function formConfigure($model) {
-		$form = new \App\Admin\Libs\Form\AdminModelForm($model, $this);
+		$form = new \Coxis\Admin\Libs\Form\AdminModelForm($model, $this);
 		
 		return $form;
 	}
