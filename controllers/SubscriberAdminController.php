@@ -3,7 +3,7 @@
 @Prefix('admin/subscribers')
 */
 class SubscriberAdminController extends \Coxis\Admin\Libs\Controller\ModelAdminController {
-	static $_model = 'subscriber';
+	static $_model = 'Coxis\Newsletter\Models\Subscriber';
 	static $_models = 'subscribers';
 	
 	function __construct() {

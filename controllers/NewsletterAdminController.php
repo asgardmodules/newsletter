@@ -3,9 +3,8 @@
 @Prefix('admin/newsletter')
 */
 class NewsletterAdminController extends \Coxis\Admin\Libs\Controller\ModelAdminController {
-	static $_model = 'mailing';
+	static $_model = 'Coxis\Newsletter\Models\Mailing';
 	static $_models = 'mailings';
-	static $_index = 'newsletter';
 	
 	function __construct() {
 		$this->_messages = array(

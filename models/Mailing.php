@@ -1,5 +1,5 @@
 <?php
-class Mailing extends Model {
+class Mailing extends \Coxis\Core\Model {
 	static $properties = array(
 		'title',
 		'content',
