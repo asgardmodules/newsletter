@@ -1,5 +1,5 @@
 <?php
-class Subscriber extends \Coxis\Core\Model {
+class Subscriber extends \Coxis\Core\Entity {
 	static $properties = array(
 		'email'
 	);

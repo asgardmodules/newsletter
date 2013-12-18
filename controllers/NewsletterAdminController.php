@@ -2,9 +2,9 @@
 /**
 @Prefix('admin/newsletter')
 */
-class NewsletterAdminController extends \Coxis\Admin\Libs\Controller\ModelAdminController {
-	static $_model = 'Coxis\Newsletter\Models\Mailing';
-	static $_models = 'mailings';
+class NewsletterAdminController extends \Coxis\Admin\Libs\Controller\EntityAdminController {
+	static $_entity = 'Coxis\Newsletter\Entities\Mailing';
+	static $_entities = 'mailings';
 	
 	function __construct() {
 		$this->_messages = array(
@@ -17,8 +17,8 @@ class NewsletterAdminController extends \Coxis\Admin\Libs\Controller\ModelAdminC
 		parent::__construct();
 	}
 	
-	public function formConfigure($model) {
-		$form = new \Coxis\Admin\Libs\Form\AdminModelForm($model, $this);
+	public function formConfigure($entity) {
+		$form = new \Coxis\Admin\Libs\Form\AdminEntityForm($entity, $this);
 		return $form;
 	}
 	
@@ -47,11 +47,11 @@ class NewsletterAdminController extends \Coxis\Admin\Libs\Controller\ModelAdminC
 	@Route('new')
 	*/
 	public function newAction($request) {
-		$_model = static::$_model;
+		$_entity = static::$_entity;
 		
-		$this->$_model = new $_model;
+		$this->$_entity = new $_entity;
 	
-		$this->form = $this->formConfigure($this->$_model);
+		$this->form = $this->formConfigure($this->$_entity);
 
 		if($this->form->isSent())
 			try {
@@ -73,7 +73,7 @@ class NewsletterAdminController extends \Coxis\Admin\Libs\Controller\ModelAdminC
 				if(\POST::has('send'))
 					return \Response::redirect($this->url_for('index'));
 				else
-					return \Response::redirect($this->url_for('edit', array('id'=>$this->$_model->id)));
+					return \Response::redirect($this->url_for('edit', array('id'=>$this->$_entity->id)));
 			}
 			catch(\Coxis\Form\FormException $e) {
 				Flash::addError($e->errors);
@@ -86,12 +86,12 @@ class NewsletterAdminController extends \Coxis\Admin\Libs\Controller\ModelAdminC
 	@Route(':id/edit')
 	*/
 	public function editAction($request) {
-		$_model = static::$_model;
+		$_entity = static::$_entity;
 		
-		if(!($this->$_model = $_model::load($request['id'])))
+		if(!($this->$_entity = $_entity::load($request['id'])))
 			$this->forward404();
 	
-		$this->form = $this->formConfigure($this->$_model);
+		$this->form = $this->formConfigure($this->$_entity);
 	
 		if($this->form->isSent())
 			try {

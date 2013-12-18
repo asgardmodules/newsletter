@@ -5,7 +5,7 @@
 class SubscriberController extends Controller {
 	public function newsletter() {
 		$subscriber = new Subscriber;
-		$this->form = new ModelForm($subscriber);
+		$this->form = new EntityForm($subscriber);
 	}
 
 	/**
@@ -13,7 +13,7 @@ class SubscriberController extends Controller {
 	*/
 	public function submitAction($request) {
 		$subscriber = new Subscriber;
-		$this->form = new ModelForm($subscriber);
+		$this->form = new EntityForm($subscriber);
 		if($this->form->isSent()) {
 			try {
 				$this->form->save();

@@ -2,9 +2,9 @@
 /**
 @Prefix('admin/subscribers')
 */
-class SubscriberAdminController extends \Coxis\Admin\Libs\Controller\ModelAdminController {
-	static $_model = 'Coxis\Newsletter\Models\Subscriber';
-	static $_models = 'subscribers';
+class SubscriberAdminController extends \Coxis\Admin\Libs\Controller\EntityAdminController {
+	static $_entity = 'Coxis\Newsletter\Entities\Subscriber';
+	static $_entities = 'subscribers';
 	
 	function __construct() {
 		$this->_messages = array(
@@ -17,8 +17,8 @@ class SubscriberAdminController extends \Coxis\Admin\Libs\Controller\ModelAdminC
 		parent::__construct();
 	}
 	
-	public function formConfigure($model) {
-		$form = new \Coxis\Admin\Libs\Form\AdminModelForm($model, $this);
+	public function formConfigure($entity) {
+		$form = new \Coxis\Admin\Libs\Form\AdminEntityForm($entity, $this);
 		
 		return $form;
 	}
