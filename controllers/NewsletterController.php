@@ -2,7 +2,7 @@
 /**
 @Prefix('newsletter')
 */
-class NewsletterController extends Controller {
+class NewsletterController extends \Coxis\Core\Controller {
 	/**
 	@Route('archives/:id/:subscriber_id')
 	*/

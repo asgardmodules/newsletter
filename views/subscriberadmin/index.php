@@ -27,7 +27,7 @@
 						</div>	
 						<div class="block_content"> -->
 						
-							<?php \Flash::showAll() ?>
+							<?php \Coxis\Core\App::get('flash')->showAll() ?>
 						
 							<?php if(sizeof($subscribers) == 0): ?>
 							<div style="text-align:center; font-weight:bold"><?php echo __('Aucun élément') ?></div>
