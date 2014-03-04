@@ -2,7 +2,7 @@
 /**
 @Prefix('newsletter')
 */
-class SubscriberController extends \Coxis\Core\Controller {
+class SubscriberController extends \Asgard\Core\Controller {
 	public function newsletter() {
 		$subscriber = new Subscriber;
 		$this->form = new EntityForm($subscriber);
@@ -18,9 +18,9 @@ class SubscriberController extends \Coxis\Core\Controller {
 			try {
 				$this->form->save();
 			}
-			catch(\Coxis\Form\FormException $e) {
+			catch(\Asgard\Form\FormException $e) {
 				echo 'Mail incorrect !';
-				return \Coxis\Core\App::get('response')->setCode(500);
+				return \Asgard\Core\App::get('response')->setCode(500);
 			}
 		}
 	}

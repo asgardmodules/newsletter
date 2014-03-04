@@ -1,5 +1,5 @@
 <?php
-class Mailing extends \Coxis\Core\Entity {
+class Mailing extends \Asgard\Core\Entity {
 	static $properties = array(
 		'title',
 		'content',

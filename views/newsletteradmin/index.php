@@ -27,7 +27,7 @@
 						</div>	
 						<div class="block_content"> -->
 						
-							<?php \Coxis\Core\App::get('flash')->showAll() ?>
+							<?php \Asgard\Core\App::get('flash')->showAll() ?>
 						
 							<?php if(sizeof($mailings) == 0): ?>
 							<div style="text-align:center; font-weight:bold"><?php echo __('Aucun élément') ?></div>
@@ -52,7 +52,7 @@
 												<td><?php echo $mailing->created_at->format('d/m/Y H:i:s') ?></td>
 												<td><a href="<?php echo $this->url_for('edit', array('id'=>$mailing->id)) ?>"><?php echo $mailing ?></a></td>
 												<td class="actions">
-													<?php \Hook::trigger_print('coxis_mailing_actions', $mailing) ?>
+													<?php \Hook::trigger_print('asgard_mailing_actions', $mailing) ?>
 													<a class="delete" href="<?php echo $this->url_for('delete', array('id'=>$mailing->id)) ?>">Delete</a>
 												</td>
 											</tr>

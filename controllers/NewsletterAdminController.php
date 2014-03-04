@@ -2,8 +2,8 @@
 /**
 @Prefix('admin/newsletter')
 */
-class NewsletterAdminController extends \Coxis\Admin\Libs\Controller\EntityAdminController {
-	static $_entity = 'Coxis\Newsletter\Entities\Mailing';
+class NewsletterAdminController extends \Asgard\Admin\Libs\Controller\EntityAdminController {
+	static $_entity = 'Asgard\Newsletter\Entities\Mailing';
 	static $_entities = 'mailings';
 	
 	function __construct() {
@@ -18,14 +18,14 @@ class NewsletterAdminController extends \Coxis\Admin\Libs\Controller\EntityAdmin
 	}
 	
 	public function formConfigure($entity) {
-		$form = new \Coxis\Admin\Libs\Form\AdminEntityForm($entity, $this);
+		$form = new \Asgard\Admin\Libs\Form\AdminEntityForm($entity, $this);
 		return $form;
 	}
 	
 	public function test($subject) {
-		$email = \Coxis\Core\App::get('post')->get('testmail');
+		$email = \Asgard\Core\App::get('post')->get('testmail');
 		$html = $this->form->content->getValue();
-		$html = str_replace('src="/', 'src="'.\Coxis\Core\App::get('url')->base(), $html);
+		$html = str_replace('src="/', 'src="'.\Asgard\Core\App::get('url')->base(), $html);
 		$html = View::render('app/newsletter/views/newsletteradmin/newsletter.php', array('content'=>$html, 'key'=>'', 'subscriber_id'=>0, 'id'=>0));
 		$html = str_replace('src="/web/', 'src="'.URL::base(), $html);
 		Email::create($email, \Value::val('email'), $subject, $this->form->plaintext->getValue(), $html)->send();
@@ -36,7 +36,7 @@ class NewsletterAdminController extends \Coxis\Admin\Libs\Controller\EntityAdmin
 		foreach($subscribers as $subscriber) {
 			$key = sha1(Config::get('salt').$subscriber->id);
 			$html = $this->form->content->getValue();
-			$html = str_replace('src="/', 'src="'.\Coxis\Core\App::get('url')->base(), $html);
+			$html = str_replace('src="/', 'src="'.\Asgard\Core\App::get('url')->base(), $html);
 			$html = $this->render('app/newsletter/views/newsletteradmin/newsletter.php', array('content'=>$html, 'subscriber_id'=>$subscriber->id, 'key'=>$key, 'id'=>$this->mailing->id));
 			$html = str_replace('src="/web/', 'src="'.URL::base(), $html);
 			Email::create($subscriber->email, \Value::val('email'), $subject, $this->form->plaintext->getValue(), $html)->send();
@@ -59,23 +59,23 @@ class NewsletterAdminController extends \Coxis\Admin\Libs\Controller\EntityAdmin
 
 				$subject = $this->form->title->getValue();
 				
-				if(\Coxis\Core\App::get('post')->has('tous')) {
+				if(\Asgard\Core\App::get('post')->has('tous')) {
 					$this->envoi($subject);
 					Flash::addSuccess(__('Mailing sent to all subscribers.'));
 				}
-				elseif(\Coxis\Core\App::get('post')->has('test')) {
+				elseif(\Asgard\Core\App::get('post')->has('test')) {
 					$this->test($subject);
 					Flash::addSuccess(__('Mailing sent to the given email address.'));
 				}
 				else
 					Flash::addSuccess($this->_messages['created']);
 				
-				if(\Coxis\Core\App::get('post')->has('send'))
-					return \Coxis\Core\App::get('response')->redirect($this->url_for('index'));
+				if(\Asgard\Core\App::get('post')->has('send'))
+					return \Asgard\Core\App::get('response')->redirect($this->url_for('index'));
 				else
-					return \Coxis\Core\App::get('response')->redirect($this->url_for('edit', array('id'=>$this->$_entity->id)));
+					return \Asgard\Core\App::get('response')->redirect($this->url_for('edit', array('id'=>$this->$_entity->id)));
 			}
-			catch(\Coxis\Form\FormException $e) {
+			catch(\Asgard\Form\FormException $e) {
 				Flash::addError($e->errors);
 			}
 		
@@ -98,21 +98,21 @@ class NewsletterAdminController extends \Coxis\Admin\Libs\Controller\EntityAdmin
 				$this->form->save();
 				
 				$subject = $this->form->title->getValue();
-				if(\Coxis\Core\App::get('post')->has('tous')) {
+				if(\Asgard\Core\App::get('post')->has('tous')) {
 					$this->envoi($subject);
 					Flash::addSuccess(__('Mailing sent to all subscribers.'));
 				}
-				elseif(\Coxis\Core\App::get('post')->has('test')) {
+				elseif(\Asgard\Core\App::get('post')->has('test')) {
 					$this->test($subject);
 					Flash::addSuccess(__('Mailing sent to the given email address.'));
 				}
 				else
 					Flash::addSuccess($this->_messages['modified']);
 
-				if(\Coxis\Core\App::get('post')->has('send'))
+				if(\Asgard\Core\App::get('post')->has('send'))
 					return Response::redirect($this->url_for('index'));
 			}
-			catch(\Coxis\Core\Form\FormException $e) {
+			catch(\Asgard\Core\Form\FormException $e) {
 				Flash::addError($e->errors);
 			}
 		

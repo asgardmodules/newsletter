@@ -11,7 +11,7 @@
 					<?php echo !$subscriber->isNew() ? $subscriber:'New' ?>
 					</a></p>
 				
-					<?php \Coxis\Core\App::get('flash')->showAll() ?>
+					<?php \Asgard\Core\App::get('flash')->showAll() ?>
 					
 					<?php
 					$form->open();

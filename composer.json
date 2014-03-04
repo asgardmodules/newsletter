@@ -1,11 +1,11 @@
 {
-	"name": "coxis/newsletter",
+	"name": "asgard/newsletter",
 	"license": "MIT",
 	"authors": [{
 		"name": "Michel Hognerud",
 		"email": "michel@hognerud.net"
 	}],
     "autoload": {
-        "psr-0": {"Coxis\\Newsletter": "../.."}
+        "psr-0": {"Asgard\\Newsletter": "../.."}
     }
 }
