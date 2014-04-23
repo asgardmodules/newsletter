@@ -6,5 +6,5 @@ require _CORE_DIR_.'core.php';
 \Asgard\Utils\FileManager::copy(__DIR__.'/app/newsletter', _DIR_.'app/newsletter');
 \Asgard\Utils\FileManager::copy(__DIR__.'/web/newsletter', _DIR_.'web/newsletter');
 
-\Asgard\Orm\MigrationsManager::addMigrationFile(__DIR__.'/migrations/Newsletter.php');
-\Asgard\Orm\MigrationsManager::migrate('Newsletter');
+\Asgard\Orm\Libs\MigrationsManager::addMigrationFile(__DIR__.'/migrations/Newsletter.php');
+\Asgard\Orm\Libs\MigrationsManager::migrate('Newsletter');
