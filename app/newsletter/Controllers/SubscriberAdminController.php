@@ -2,7 +2,7 @@
 /**
 @Prefix('admin/subscribers')
 */
-class SubscriberAdminController extends \Asgard\Admin\Libs\Controller\EntityAdminController {
+class SubscriberAdminController extends \App\Admin\Libs\Controller\EntityAdminController {
 	static $_entity = 'Asgard\Newsletter\Entities\Subscriber';
 	static $_entities = 'subscribers';
 	
@@ -18,7 +18,7 @@ class SubscriberAdminController extends \Asgard\Admin\Libs\Controller\EntityAdmi
 	}
 	
 	public function formConfigure($entity) {
-		$form = new \Asgard\Admin\Libs\Form\AdminEntityForm($entity, $this);
+		$form = new \App\Admin\Libs\Form\AdminEntityForm($entity, $this);
 		
 		return $form;
 	}
