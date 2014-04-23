@@ -28,7 +28,7 @@ class SubscriberController extends \Asgard\Core\Controller {
 	@Route('unsubscribe/:key')
 	*/
 	public function unsubAction($request) {
-		$subscriber = Membre::where(array("SHA1(CONCAT('".Config::get('salt')."', id)) = '$request[key]'"))->first();
+		$subscriber = Membre::where(array("SHA1(CONCAT('".Config::get('key')."', id)) = '$request[key]'"))->first();
 		if(!$membre)
 			$this->notfound();
 		$subscriber->destroy();

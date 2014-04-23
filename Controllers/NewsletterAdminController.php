@@ -6,7 +6,7 @@ class NewsletterAdminController extends \Asgard\Admin\Libs\Controller\EntityAdmi
 	static $_entity = 'Asgard\Newsletter\Entities\Mailing';
 	static $_entities = 'mailings';
 	
-	function __construct() {
+	public function __construct() {
 		$this->_messages = array(
 			'modified'			=>	__('Mailing modified with success.'),
 			'created'			=>	__('Mailing sent with success.'),
@@ -34,7 +34,7 @@ class NewsletterAdminController extends \Asgard\Admin\Libs\Controller\EntityAdmi
 	public function envoi($subject) {
 		$subscribers = Subscriber::all();
 		foreach($subscribers as $subscriber) {
-			$key = sha1(Config::get('salt').$subscriber->id);
+			$key = sha1(Config::get('key').$subscriber->id);
 			$html = $this->form->content->getValue();
 			$html = str_replace('src="/', 'src="'.\Asgard\Core\App::get('url')->base(), $html);
 			$html = $this->render('app/newsletter/views/newsletteradmin/newsletter.php', array('content'=>$html, 'subscriber_id'=>$subscriber->id, 'key'=>$key, 'id'=>$this->mailing->id));

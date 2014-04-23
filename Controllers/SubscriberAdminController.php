@@ -6,7 +6,7 @@ class SubscriberAdminController extends \Asgard\Admin\Libs\Controller\EntityAdmi
 	static $_entity = 'Asgard\Newsletter\Entities\Subscriber';
 	static $_entities = 'subscribers';
 	
-	function __construct() {
+	public function __construct() {
 		$this->_messages = array(
 			'modified'			=>	__('Subscriber modified with success.'),
 			'created'			=>	__('Subscriber created with success.'),

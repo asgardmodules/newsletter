@@ -12,7 +12,7 @@ class NewsletterController extends \Asgard\Core\Controller {
 		$subscriber = Subscriber::load($request['subscriber_id']);
 		if($subscriber) {
 			$sub_id = $subscriber->id;
-			$key = sha1(Config::get('salt').$subscriber->id);
+			$key = sha1(Config::get('key').$subscriber->id);
 		}
 		else {
 			$sub_id = 0;
