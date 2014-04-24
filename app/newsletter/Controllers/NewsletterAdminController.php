@@ -3,8 +3,8 @@
 @Prefix('admin/newsletter')
 */
 class NewsletterAdminController extends \App\Admin\Libs\Controller\EntityAdminController {
-	static $_entity = 'Asgard\Newsletter\Entities\Mailing';
-	static $_entities = 'mailings';
+	protected $_entity = 'Asgard\Newsletter\Entities\Mailing';
+	protected $_entities = 'mailings';
 	
 	public function __construct() {
 		$this->_messages = array(

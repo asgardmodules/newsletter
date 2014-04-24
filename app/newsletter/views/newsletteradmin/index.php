@@ -2,7 +2,7 @@
 				<div class="block_head">
 					<div class="bheadl"></div>
 					<div class="bheadr"></div>
-					<h2><a href="<?php echo $this->url_for('index') ?>"><?php echo ucfirst(static::$_entities) ?></a></h2>
+					<h2><a href="<?php echo $this->url_for('index') ?>"><?php echo ucfirst($_entities) ?></a></h2>
 					<ul>
 						<li><a href="<?php echo $this->url_for('new') ?>">Add</a></li>
 					</ul>
@@ -52,7 +52,7 @@
 												<td><?php echo $mailing->created_at->format('d/m/Y H:i:s') ?></td>
 												<td><a href="<?php echo $this->url_for('edit', array('id'=>$mailing->id)) ?>"><?php echo $mailing ?></a></td>
 												<td class="actions">
-													<?php \Hook::trigger_print('asgard_mailing_actions', $mailing) ?>
+													<?php \Asgard\Core\App::get('hook')->trigger_print('asgard_mailing_actions', $mailing) ?>
 													<a class="delete" href="<?php echo $this->url_for('delete', array('id'=>$mailing->id)) ?>">Delete</a>
 												</td>
 											</tr>
